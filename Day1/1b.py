@@ -9,7 +9,7 @@ you visit twice is 4 blocks away, due East.
 How many blocks away is the first location you visit twice?
 '''
 
-f = open('input1.txt', 'r')
+f = open('test.txt', 'r')
 lines = f.read().split(',')
 
 
@@ -41,7 +41,6 @@ def change_direction(current_dir, new_dir):
         else:
             return "south"
 
-
 x_pos = 0
 y_pos = 0
 direction = "north"
@@ -58,11 +57,17 @@ for i in lines:
     elif new_direction == "west":
         x_pos -= get_number(i)
     direction = new_direction
-    dist_from_origin = abs(x_pos) + abs(y_pos)
-    if dist_from_origin in distance_list:
-        print("First spot visited twice: " + str(dist_from_origin))
+    new_point = [x_pos, y_pos]
+
+    # dist_from_origin = abs(x_pos) + abs(y_pos)
+    if new_point in distance_list:
+        distance_list.append(new_point)
+        print(abs(x_pos) + abs(y_pos))
         break
     else:
-        distance_list.append(dist_from_origin)
+        distance_list.append(new_point)
 
 #print(abs(x_pos) + abs(y_pos))
+
+# Note to self, it's not where you END, but rather where the
+# path crosses itself at all.
