@@ -23,15 +23,21 @@ data = np.loadtxt("input3.txt")
 
 def is_triangle(sides):
     triangle = True
-    if sides[0] + sides[1] < sides[2]:
+    if sides[0] + sides[1] <= sides[2]:
         triangle = False
-        break
-    if sides[1] + sides[2] < sides[0]:
+        return
+    elif sides[1] + sides[2] <= sides[0]:
         triangle = False
-        break
-    if sides[0] + sides[2] < sides[1]:
+        return
+    elif sides[0] + sides[2] <= sides[1]:
         triangle = False
-        break
+        return
 
     return triangle
 
+possible_triangles = 0
+for row in data:
+    if is_triangle(row):
+        possible_triangles += 1
+
+print(possible_triangles)
