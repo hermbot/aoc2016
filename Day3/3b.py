@@ -16,3 +16,27 @@ the same hundreds digit would be part of the same triangle:
 203 403 603
 In your puzzle input, and instead reading by columns, how many
 of the listed triangles are possible?'''
+
+import numpy as np
+
+data = np.loadtxt("input3.txt")
+
+def is_triangle(sides):
+    triangle = True
+    if sides[0] + sides[1] <= sides[2]:
+        triangle = False
+        return
+    elif sides[1] + sides[2] <= sides[0]:
+        triangle = False
+        return
+    elif sides[0] + sides[2] <= sides[1]:
+        triangle = False
+        return
+
+    return triangle
+
+possible_triangles = 0
+stride = 3
+
+
+print(possible_triangles)
