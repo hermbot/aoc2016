@@ -45,6 +45,6 @@ for i in lines:
         y_pos -= get_number(i)
     elif new_direction == "west":
         x_pos -= get_number(i)
+    direction = new_direction
 
-print(x_pos)
-print(y_pos)
+print(abs(x_pos) + abs(y_pos))
